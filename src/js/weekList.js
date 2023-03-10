@@ -19,7 +19,8 @@ for (let i = 0; i < dayList.length; i++) {
 
 const week = [];
 for (let i = 0; i < dayList.length; i++) {
-    const day = weekList.querySelector(`#${dayList[i]}`)
+    const { id } = dayList[i];
+    const day = weekList.querySelector(`#${id}`)
     week.push(day);
 }
 
