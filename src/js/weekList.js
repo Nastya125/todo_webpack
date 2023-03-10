@@ -1,27 +1,22 @@
 const dayList = [
-    "sun",
-    "mon",
-    "tue",
-    "wed",
-    "thu",
-    "fri",
-    "sat",
-
+    {id:"sun", title: "Вс"},
+    {id:"mon", title: "Вс"},
+    {id:"tue", title: "Вс"},
+    {id:"wed", title: "Вс"},
+    {id:"thu", title: "Вс"},
+    {id:"fri", title: "Вс"},
+    {id:"sat", title: "Вс"},
 ]
 
 const weekList = document.createElement("ul");
 let date = new Date();
 
-weekList.classList.add('week_list')
-weekList.innerHTML = `
-            <li>Пн<input id="mon" type="radio"></li>
-            <li>Вт<input id="tue" type="radio"></li>
-            <li>Ср<input id="wed" type="radio"></li>
-            <li>Чт<input id="thu" type="radio"></li>
-            <li>Пт<input id="fri" type="radio"></li>
-            <li>Сб<input id="sat" type="radio"></li>
-            <li>Вс<input id="sun" type="radio"></li>
-    `
+weekList.classList.add('week_list');
+for (let i = 0; i < dayList.length; i++) {
+    const { id, title } = dayList[i];
+    weekList.innerHTML += `<li>${title}<input id="${id}" type="radio></li>`
+}
+
 const week = [];
 for (let i = 0; i < dayList.length; i++) {
     const day = weekList.querySelector(`#${dayList[i]}`)
