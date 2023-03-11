@@ -1,0 +1,46 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    border: 1px solid $bg-primary;
+    border-radius: 12px;
+    width: 688px;
+    height: auto;
+    padding: 44px;
+    background-color: white;
+    align-items: flex-start;
+
+    h2 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 150%;
+    }
+}
+
+.record {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    &_id {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        h4 {
+            border-right: 1px solid black;
+            padding: 0 10px;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 30px;
+        }
+    }
+    &_text {
+        padding: 0 10px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        border: none;
+        width: 100%;
+    }
+}

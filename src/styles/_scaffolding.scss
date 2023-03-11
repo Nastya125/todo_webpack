@@ -3,23 +3,18 @@ html {
   font-family: $font-family;
   background: $background-color;
   color: $font-color;
-  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: auto;
   text-align: center;
   max-width: $page-width;
+  padding: 48px;
+  background-color: $bg-body;
+  border: 1px solid #ff6fff;
+  border-radius: 12px;
 }
 
-h1 {
-  margin: 0 0 2rem;
-}
 
-.image {
-  display: inline-block;
-  height: 100px;
-  width: 100px;
-  background-image: url('~assets/example.png');
-  background-size: cover;
-}

@@ -1,7 +1,8 @@
-import '@/styles/index.scss'
-import headerDate from '@/js/headerDate'
+import '@/styles/index.scss';
+import headerDate from '@/js/headerDate';
 import weekList from '@/js/weekList';
+import taskList from '@/js/taskList';
 
 
 const app = document.querySelector('#root')
-app.append(headerDate, weekList)
+app.append(headerDate, weekList, taskList)
