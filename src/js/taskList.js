@@ -16,7 +16,6 @@ const recordList = [
     {time:"8pm", notice: "8 pm"},
     {time:"9pm", notice: "9 pm"},
     {time:"10pm", notice: "10 pm"},
-    {time:"11pm", notice: "11 pm"},
 ]
 
 function createRecord(time, notice) {const record = document.createElement('div');
