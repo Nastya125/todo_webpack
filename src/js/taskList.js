@@ -16,7 +16,15 @@ const recordList = [
     {time:"8pm", notice: "8 pm"},
     {time:"9pm", notice: "9 pm"},
     {time:"10pm", notice: "10 pm"},
-]
+];
+
+async function getPost(id){
+    let response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id + 1}`);
+    let result = await response.json();
+    const { time } = recordList[id];
+    const newRecord = createRecord(time, result.title);
+    taskList.append(newRecord);
+}
 
 function createRecord(time, notice) {const record = document.createElement('div');
 record.classList.add('record');
@@ -34,11 +42,8 @@ taskList.classList.add('task-list');
 taskList.innerHTML = `
     <h2>Daily Schedule</h2>
 `
-for (let i = 0; i < recordList.length; i++) {
-    const { time, notice } = recordList[i];
-    const newRecord = createRecord(time, notice);
-    taskList.append(newRecord);
-    
+for (let i = 0; i <= recordList.length; i++) {
+    getPost(i);
 }
 
 
