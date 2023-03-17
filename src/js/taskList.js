@@ -1,49 +1,73 @@
 const recordList = [
-    {time:"6am", notice: "6 am"},
-    {time:"7am", notice: "7 am"},
-    {time:"8am", notice: "8 am"},
-    {time:"9am", notice: "9 am"},
-    {time:"10am", notice: "10 am"},
-    {time:"11am", notice: "11 am"},
-    {time:"12am", notice: "12 am"},
-    {time:"1pm", notice: "1 pm"},
-    {time:"2pm", notice: "2 pm"},
-    {time:"3pm", notice: "3 pm"},
-    {time:"4pm", notice: "4 pm"},
-    {time:"5pm", notice: "5 pm"},
-    {time:"6pm", notice: "6 pm"},
-    {time:"7pm", notice: "7 pm"},
-    {time:"8pm", notice: "8 pm"},
-    {time:"9pm", notice: "9 pm"},
-    {time:"10pm", notice: "10 pm"},
+    {time:"6", notice: ""},
+    {time:"7", notice: ""},
+    {time:"8", notice: ""},
+    {time:"9", notice: ""},
+    {time:"10", notice: ""},
+    {time:"11", notice: ""},
+    {time:"12", notice: ""},
+    {time:"1", notice: ""},
+    {time:"2", notice: ""},
+    {time:"3", notice: ""},
+    {time:"4", notice: ""},
+    {time:"5", notice: " "},
+    {time:"6", notice: " "},
+    {time:"7", notice: ""},
+    {time:"8", notice: ""},
+    {time:"9", notice: ""},
+    {time:"10", notice: " "},
 ];
 
-async function getPost(id){
-    let response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id + 1}`);
-    let result = await response.json();
-    const { time } = recordList[id];
-    const newRecord = createRecord(time, result.title);
+function getTimeForRecord(time) {
+    const option = document.createElement('option');
+    option.classList.add("option")
+    option.innerHTML += `<option value="${time}">${time}.00</option>`
+    return option
+}
+
+function getOptions(id) {
+    const {time} = recordList[id]
+    const option = getTimeForRecord(time)
+    select.append(option)
+}
+
+function createRecord(time, notice) {
+    const record = document.createElement('div');
+    record.classList.add('record');
+    record.innerHTML = `
+        <div class="record_id">
+            <h4>${time}.00</h4>
+            <input type="text" value="${notice}" class="record_text"></input>
+        </div>   
+        `
+return record;
+}
+
+function getPost(id){
+    const { time, notice } = recordList[id];
+    const newRecord = createRecord(time, notice);
     taskList.append(newRecord);
 }
 
-function createRecord(time, notice) {const record = document.createElement('div');
-record.classList.add('record');
-record.innerHTML = `
-    <div class="record_id">
-        <h4>${time}</h4>
-        <input type="text" value="${notice}" class="record_text"></input>
-    </div>   
-`
-return record;
-}
+
+const select = document.createElement('select');
+select.classList.add('select');
+
+const taskInput = document.createElement('input');
+taskInput.classList.add('task-input');
 
 const taskList = document.createElement('ul');
 taskList.classList.add('task-list');
 taskList.innerHTML = `
     <h2>Daily Schedule</h2>
 `
-for (let i = 0; i <= recordList.length; i++) {
+taskList.append(select)
+taskList.append(taskInput)
+
+
+for (let i = 0; i < recordList.length; i++) {
     getPost(i);
+    getOptions(i)
 }
 
 

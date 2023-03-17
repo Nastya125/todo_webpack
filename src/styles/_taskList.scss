@@ -9,6 +9,7 @@
     padding: 44px;
     background-color: white;
     align-items: flex-start;
+    gap: 5px; 
 
     h2 {
         margin: 0;
@@ -16,31 +17,44 @@
         font-size: 30px;
         line-height: 150%;
     }
-}
-
-.record {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #000;
-    width: 100%;
-    &_id {
+    .inputs {
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        h4 {
-            border-right: 1px solid black;
-            padding: 0 10px;
-            font-weight: 700;
-            font-size: 20px;
-            line-height: 30px;
+        gap: 30px;
+        width: 100%;
+        .input {
+            box-shadow: #d8cece;
+            width: 90%;
+            height: 30px;
+            padding-left: 30px;
         }
     }
-    &_text {
-        padding: 0 10px;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 27px;
-        border: none;
+
+
+    .record {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #000;
         width: 100%;
+        &_id {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            h4 {
+                border-right: 1px solid black;
+                padding: 0 10px;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 30px;
+            }
+        }
+        &_text {
+            padding: 0 10px;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            border: none;
+            width: 100%;
+        }
     }
 }
+
