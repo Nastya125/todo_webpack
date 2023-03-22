@@ -1,14 +1,22 @@
-.week_list {
+.week-list-div {
+    display: flex;
+    gap: 17px;
+    
+}
+
+.week-list {
     display: flex;
     list-style: none;
     gap: 15px;
     border-radius: 16px;
-    width: fit-content;
+    width: 300px;
     padding: 0 15px;
     background-color: white;
-    height: 50px;
+    height: 128px;
     justify-content: center;
     align-items: center;
+    border: 1px solid #e6e6e6;
+
     li {
         display: flex;
         flex-direction: column;

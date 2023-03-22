@@ -15,4 +15,14 @@ moodIndicator.append(createMoodIndicator(moodImages.Fine));
 moodIndicator.append(createMoodIndicator(moodImages.Content));
 moodIndicator.append(createMoodIndicator(moodImages.Happy));
 
+moodIndicator.addEventListener('click', (event)=> {
+    event.target.classList.add('img-active');
+
+    // if(event.target.classList.contains('img-active')){
+    //     console.log("Уже есть")
+    // }
+    //     event.target.classList.remove('img-active');
+    // }
+})
+
 export default moodIndicator;

@@ -1,9 +1,8 @@
 import '@/styles/index.scss';
 import headerDate from '@/js/headerDate';
-import weekList from '@/js/weekList';
+import weekListDiv from '@/js/weekList';
 import taskList from '@/js/taskList';
-import moodIndicator from '@/js/moodIndicator';
 
 
 const app = document.querySelector('#root')
-app.append(headerDate, weekList, taskList, moodIndicator)
+app.append(headerDate, weekListDiv, taskList)

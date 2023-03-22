@@ -1,3 +1,5 @@
+import moodIndicator from '@/js/moodIndicator';
+
 const dayList = [
     {id:"sun", title: "Вс"},
     {id:"mon", title: "Пн"},
@@ -8,14 +10,17 @@ const dayList = [
     {id:"sat", title: "Сб"},
 ]
 
-const weekList = document.createElement("ul");
+const weekListDiv = document.createElement("div");
+weekListDiv.classList.add('week-list-div');
 let date = new Date();
 
-weekList.classList.add('week_list');
+const weekList = document.createElement("ul");
+weekList.classList.add('week-list');
 for (let i = 0; i < dayList.length; i++) {
     const { id, title } = dayList[i];
     weekList.innerHTML += `<li>${title}<input id="${id}" type="radio" name="week"></li>`
 }
+weekListDiv.append(weekList, moodIndicator);
 
 const week = [];
 for (let i = 0; i < dayList.length; i++) {
@@ -26,4 +31,5 @@ for (let i = 0; i < dayList.length; i++) {
 
 week[date.getDay()].checked = true;
 
-export default weekList;
+
+export default weekListDiv;
