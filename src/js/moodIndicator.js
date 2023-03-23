@@ -15,14 +15,14 @@ moodIndicator.append(createMoodIndicator(moodImages.Fine));
 moodIndicator.append(createMoodIndicator(moodImages.Content));
 moodIndicator.append(createMoodIndicator(moodImages.Happy));
 
-moodIndicator.addEventListener('click', (event)=> {
-    event.target.classList.add('img-active');
 
-    // if(event.target.classList.contains('img-active')){
-    //     console.log("Уже есть")
-    // }
-    //     event.target.classList.remove('img-active');
-    // }
-})
+    const emogies = moodIndicator.childNodes;
+    emogies.forEach (emogi => {
+        emogi.addEventListener('click', function() {
+            emogies.forEach(emogi => emogi.classList.remove('img-active'));
+            this.classList.add('img-active');
+        })
+    })
+
 
 export default moodIndicator;
