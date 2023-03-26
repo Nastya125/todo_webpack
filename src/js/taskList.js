@@ -19,12 +19,10 @@ const recordList = [
 ];
 
 recordList.forEach( (record, i) => {
-    const {time, notice} = record
-    record.notice = getItemLocalStore(`time_${record.time}`)
+    const {time, notice} = record;
+    record.notice = getItemLocalStore(`time_${time}`);
 
 }) 
-
-
 
 const select = document.createElement('select');
 select.classList.add('select');
@@ -35,13 +33,13 @@ taskInput.placeholder = 'Задача';
 
 const submit = document.createElement('button');
 submit.classList.add('submit');
-submit.textContent = 'Добавить запись';
+submit.textContent = 'Добавить задачу';
 
 
 const taskList = document.createElement('ul');
 taskList.classList.add('task-list');
 taskList.innerHTML = `
-    <h2>Daily Schedule</h2>
+    <h2>Список дел</h2>
 `
 taskList.append(select);
 taskList.append(taskInput);
@@ -56,6 +54,7 @@ for (let i = 0; i < recordList.length; i++) {
     getOptions(i)
 
 }
+
 
 let inputValue = "";
 let selectValue = select.value;
@@ -91,6 +90,23 @@ submit.addEventListener('click', ()=> {
 })
 
 
+taskList.addEventListener('click', (event)=> {
+
+    if(event.target.classList.contains('record_delete')){
+        const id = event.target.closest('.record').id
+        const time = id.split('_')[1];
+
+        recordList.forEach(record => {
+            if (record.time == time) {
+              record.notice = ''
+              setItemLocalStore(`time_${time}`, '')
+            }
+          })
+          deletePost(time)
+
+    }
+})
+
 
 function getTimeForRecord(time) {
     const option = document.createElement('option');
@@ -108,18 +124,29 @@ function getOptions(id) {
 function createRecord(time, notice) {
     const record = document.createElement('div');
     record.classList.add('record');
+    record.id = `post_${time}`
     record.innerHTML = `
         <div class="record_id">
             <h4>${time}.00</h4>
-            <input id="time_${time}" readonly type="text" value="${notice}" class="record_text"></input>
+            <input id="time_${time}" readonly type="text" value="${notice}" class="record_text">
+            <button class="record_delete">x</button>
         </div>   
         `
+
 return record;
 }
+
+
+
 
 function getPost(time, notice){
     const newRecord = createRecord(time, notice);
     taskList.append(newRecord);
+}
+
+function deletePost(id){
+    const post = taskList.querySelector(`#post_${id}`);
+    post.remove()
 }
 
 function setInputValue (id, value) {
@@ -138,5 +165,7 @@ function getItemLocalStore(key) {
     }
     return result;
 }
+
+
 
 export default taskList;

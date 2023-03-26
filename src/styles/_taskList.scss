@@ -27,6 +27,7 @@
             height: 30px;
             padding-left: 30px;
         }
+
     }
 
 
@@ -54,6 +55,18 @@
             line-height: 27px;
             border: none;
             width: 100%;
+        }
+        &_delete{
+            font-size: 16px;
+            width: 25px;
+            height: 25px;
+            border: 2px solid $header-date;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            cursor: pointer;
         }
     }
 
@@ -83,6 +96,7 @@
         background-color: $bg-body;
         border-radius: 5px;
         border: 1px solid $bg-primary;
+        cursor: pointer;
     }
 }
 

@@ -1,5 +1,9 @@
 import * as moodImages from '@/images/index';
 
+
+
+
+
 function createMoodIndicator(image) {
     const img = document.createElement('img');
     img.classList.add('img');
@@ -17,12 +21,46 @@ moodIndicator.append(createMoodIndicator(moodImages.Happy));
 
 
     const emogies = moodIndicator.childNodes;
-    emogies.forEach (emogi => {
+
+    for(let i=0; i<emogies.length; i++){
+        let index = getItemLocalStore('color')
+        if(index){
+            emogies[index].classList.add('img-active')
+        }
+        
+    }
+    
+
+    emogies.forEach ((emogi,index) => {
+       
         emogi.addEventListener('click', function() {
-            emogies.forEach(emogi => emogi.classList.remove('img-active'));
-            this.classList.add('img-active');
+            emogies.forEach((emogi) => {
+                emogi.classList.remove('img-active');
+                localStorage.removeItem(this.classList)
         })
+
+            this.classList.add('img-active');
+            setItemLocalStore('color', index);
+
+        })
+
     })
+ 
+
+
+    
+
+    function setItemLocalStore(key, value) {
+        localStorage.setItem(key, value);
+    }
+    
+    function getItemLocalStore(key) {
+        let result = localStorage.getItem(key)
+        if (result==null){
+            return "";
+        }
+        return result;
+    }
 
 
 export default moodIndicator;
